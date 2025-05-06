@@ -1,0 +1,469 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(180deg, #030927, #341750);
+    color: #c7acac;  
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    z-index: 1000;
+    transition: 0.5s ease-in-out;
+}
+
+header.ativo {
+    background-color: #292929;
+    transition: .5s;
+}
+
+.titulo_nome {
+    margin-left: 2rem;
+}
+
+.navegacao {
+    display: flex;
+    justify-content: right;
+    font-size: 1em;
+    margin-right: 80px;
+    padding: 8px;
+}
+
+.navegacao::after{
+    content: '';
+    transition: tra 1s;
+}
+
+.navegacao a {
+    display: inline-flex;
+    width: 100px;
+    height: 40px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+.navegacao a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #a10fc5;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navegacao a:hover {
+    color: #a10fc5;
+    transition: .5s;
+}
+
+.navegacao a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.bloco__inicio {
+    padding: 8em 10em 12em 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5em;
+    position: relative;
+    box-sizing: none;
+    text-align: justify;
+}
+
+.botao_curriculo {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 1.6rem;
+    background-color: rgb(46, 16, 101);
+    margin-top: 2.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    transition: .5s ease;
+}
+
+.botao_curriculo:hover {
+    transform: scale(1.1);
+}
+
+
+a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+svg {
+    color: #fff;
+    height: 3rem;
+}
+
+.bloco__sobre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0 0 0 ;
+}
+
+.sobre {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo_sobre {
+    display: flex;
+    font-size: 2em;
+    justify-content: center;
+}
+
+.texto_sobre {
+    margin-top: 20px;
+    font-size: 1em;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    text-align: justify;
+}
+
+.img__sobre {
+    display: flex;
+    height: 60vh;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 30px 30px 15px #00000056;
+}
+
+.pato {
+    display: flex;
+    height: 60vh;
+    margin-left: 5rem;
+    border-radius: 10px;
+    box-shadow: -30px 30px 15px #00000056;
+}
+
+.bloco__projetos {
+    justify-content: center;
+    align-items: center;
+    padding: 10rem;
+}
+
+.titulo_projetos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.texto_projetos {
+    font-size: 1.3em;
+    margin-bottom: 2rem;
+}
+
+/* slides */
+.projetos__andrei {
+    margin: 0 auto;
+    width: 50rem;
+    height: 30rem;
+    overflow: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 30em;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 25%;
+    position: relative;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.slide img {
+    width: 48rem;
+    border-radius: 20px;
+}
+
+.manual-navigation {
+    position: absolute;
+    width: 50rem;
+    margin-top: -3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid #000;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child) { /* menos no ultimo item */
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background-color: #fff;
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+#radio2:checked ~ .first {
+    margin-left: -25%;
+}
+#radio3:checked ~ .first {
+    margin-left: -50%;
+}
+#radio4:checked ~ .first {
+    margin-left: -75%;
+}
+
+.navigation-auto div {
+    border: 2px solid #c7acac;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.navigation-auto {
+    position: absolute;
+    width: 50rem;
+    margin-top: 27rem;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 2.5rem;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+    background-color: #000;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+    background-color: #fff;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+    background-color: #fff;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4 {
+    background-color: #fff;
+}
+
+/* fim slides */
+
+/* botoes projetos */
+
+.projetos-btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.projetos-btn .btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.projetos-btn .btn a {
+    background: rgb(46, 16, 101);
+    display: flex;
+    border: 2px solid rgb(46, 16, 101);
+    padding: 1.5rem;
+    margin: 2rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    transition: .5s;
+}
+
+.projetos-btn .btn a:hover {
+    transform: scale(1.1);
+}
+
+
+/* fim botoes projetos */
+
+.bloco__habilidades {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_habilidades {
+    display: flex;
+    width: 10px;
+    height: 10px;
+}
+
+.titulo_habilidades {
+    font-size: 2em;
+}
+
+.bloco__contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo_contato {
+    font-size: 2em;
+}
+
+.secao_contato {
+    display: flex;
+    padding: 0px 5rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    font-size: 1em;
+    margin: 0px auto 8rem;
+    margin-right: 30px;
+    text-align: justify;
+}
+
+.flashcard {
+    flex-direction: column;
+    width: 50%;
+    height: 95vh;
+    margin-bottom: 50px;
+    display: flex;
+    padding: 30px 0 0 0;
+    background: #2f2841;
+    border-radius: 20px;
+    box-shadow: 40px 40px 20px #00000056;
+}
+
+.titulo_card{
+    display: flex;
+    justify-content: center;
+}
+
+.textfield > input {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    margin: 0 auto;
+}
+
+textarea {
+    display: flex;
+    width: 80%;
+    height: 10rem;
+    margin: 0 auto;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.5rem;
+    resize: none;
+    padding: 1rem;
+    background: #514869;
+}
+
+.textfield > label {
+    display: flex;
+    justify-content: center;
+    color: #f0ffffde;
+    padding: 10px;
+}
+
+.textfield > input::placeholder {
+    color: #f0ffff94;
+}
+
+.btn-login {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding:  16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    background: rgb(46, 16, 110);
+    cursor: pointer;
+    box-shadow: 5px 10px 10px #00000056;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.enviar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.3em;
+}
+    
+    
+
+footer {
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #030927;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+}
+
+.bloco__inicio, .bloco__sobre, .bloco__projetos, .bloco__habilidades, .bloco__contato, .flashcard {
+    visibility: hidden;
+}
+
+
+
+
+
