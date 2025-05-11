@@ -6,20 +6,22 @@ sr.reveal('.bloco__inicio', { duration: 1500 });
 
 sr.reveal('.bloco__sobre', { 
     rotate: { x:0, y:80, z:0},
-    duration: 3000 
+    delay: 500,
+    duration: 2000
 });
 
 sr.reveal('.bloco__projetos', { 
     rotate: { x:80, y:0, z:0},
-    duration: 3000 });
+    delay: 500,
+    duration: 2000 });
 
 sr.reveal('.bloco__habilidades', { duration: 1500 });
 
 sr.reveal('.bloco__contato', { duration: 1000 });
 
 sr.reveal('.flashcard', { 
-    delay: 1000,
-    duration: 2000
+    delay: 500,
+    duration: 1500
 });
 
 function activeScroll() {
