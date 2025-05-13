@@ -306,7 +306,7 @@ a {
 }
 
 .projetos-btn .btn a {
-    background: #8b008b;
+    background: rgb(46, 16, 101);
     display: flex;
     padding: 1.5rem;
     margin: 2rem;
@@ -408,7 +408,7 @@ span {
 
 .academico a{
     font-size: 1rem;
-    background: #8b008b;
+    background: rgb(46, 16, 101);
     padding: 15px;
     border-radius: 10px;
     transition: .5s;
@@ -439,9 +439,7 @@ span {
 
 .text-and-contact {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: column;
+    flex-wrap: wrap;
     padding: 2rem;
     flex-wrap: wrap; 
   }
@@ -449,7 +447,7 @@ span {
   .text-and-contact .text {
     flex: 1;
     min-width: 300px;
-    max-width: 48%;
+    max-width: 45%;
     font-size: 1.3rem;
     line-height: 1.6;
 }
@@ -457,14 +455,22 @@ span {
   .text-and-contact .contact {
     flex: 1;
     min-width: 300px;
-    max-width: 48%;
+    max-width: 40%;
+    margin: 2rem 5rem;
   }
-  
+
   .flashcard {
-    background-color: #f9f9f9;
+    background-color: #030927;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 10px #292929;
+  }
+
+  .flashcard h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
   
   .textfield {
@@ -481,34 +487,57 @@ span {
   .textfield textarea {
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 1rem;
+    background-color: #ccc;
+  }
+
+  .button-div {
+    display: flex;
+    justify-content: center;
   }
   
   .btn-login {
-    background-color: #007bff;
+    background-color: rgb(46, 16, 101);
     color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 15px 35px;
+    font-size: 1.2rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all .5s ease;
   }
   
   .btn-login:hover {
-    background-color: #0056b3;
+    background-color: #c7acac;
+    color: #292929;
   }
   
   .icons-contato a {
-    margin-right: 10px;
-    font-size: 1.5rem;
-    color: #000;
+    margin-right: 1.5rem;
+    font-size: 3rem;
+    color: #c7acac;
+    transition: .5s;
   }
   
   .icons-contato a:hover {
-    color: #007bff;
+    color: #9616b6;
   }
+
+  .message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.loading {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    display: none;
+}
   
     
 
@@ -525,6 +554,12 @@ footer {
 
 .bloco__inicio, .bloco__sobre, .bloco__projetos, .bloco__habilidades, .bloco__contato, .flashcard {
     visibility: hidden;
+}
+
+@media (max-width:480px) {
+    .bloco__inicio {
+        height: 50vh;
+    }
 }
 
 

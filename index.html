@@ -30,7 +30,7 @@
         <section class="bloco__inicio" id="inicio">
             <h2 class="titulo_inicio"><strong>Um desenvolvedor <span>full stack</span> sonhador</strong></h2>
             <p class="texto_inicio">Na busca de mais conhecimentos e aprendizados na carreira, abaixo, está o meu curriculo e minha página para saber mais sobre mim e meus projetos, fique a vontade para ver mais sobre minha pessoa😊</p>
-            <a class="botao_curriculo" href="assets/img/Currículo Andrei Vinicius (1) (1).pdf" download="Curriculo">
+            <a class="botao_curriculo" href="assets/img/curriculo.pdf" download="Curriculo">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M320 336h76c55 0 100-21.21 100-75.6s-53-73.47-96-75.6C391.11 99.74 329 48 256 48c-69 0-113.44 45.79-128 91.2-60 5.7-112 35.88-112 98.4S70 336 136 336h56M192 400.1l64 63.9 64-63.9M256 224v224.03" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                 Curriculo
             </a>
@@ -203,27 +203,25 @@
                     <br>
                     <p>Para conhecer mais sobre mim e meu trabalho, você pode visitar um dos meus perfis online...</p>
                     <div class="icons-contato">
-                        <a href="https://www.linkedin.com/in/andrei-vds-dev" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/andrei_vinicius_k/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://github.com/AndreiVDS" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        <br>
+                        <a href="https://www.linkedin.com/in/andrei-vds-dev" target="_blank"><i class="fa-brands fa-linkedin fa-beat-fade"></i></a>
+                        <a href="https://www.instagram.com/andrei_vinicius_k/" target="_blank"><i class="fa-brands fa-instagram fa-beat-fade"></i></a>
+                        <a href="https://github.com/AndreiVDS" target="_blank"><i class="fa-brands fa-github fa-beat-fade"></i></a>
+                    </div>
+                    <br>
                     <p>Obrigado por visitar meu portfólio e por considerar colaborar comigo. Mal posso esperar para começarmos essa jornada juntos!</p>
                     <br>
                     <p>Atenciosamente, </p>
                     <br>
                     <p>Andrei Vinicius.</p>
-                    </div>
-            </div>
-                    
                 </div>
 
                 <div class="contact">
-                    <form class="flashcard">
+                    <form action="#" class="flashcard" id="contact-form">
                         <h1 class="titulo_card">Fale comigo por E-mail</h1>
         
                         <div class="textfield">
-                            <label for="usuario">Nome:</label>
-                            <input type="text" name="usuario" placeholder="Seu nome..." required>
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nome" placeholder="Seu nome..." required>
                         </div>
         
                         <div class="textfield">
@@ -236,11 +234,20 @@
                             <textarea id="mensagem" name="mensagem" rows="6" placeholder="Digite sua mensagem..." required></textarea>
                         </div>
         
-                        <div>
-                        <button class="btn-login" type="submit">Enviar</button>
+                        <div class="button-div">
+                            <button class="btn-login" type="submit">Enviar</button>
                         </div>
+
+                        <input type="hidden" name="_template" value="box">
+
+                        <div class="loading" id="loading"><i class="fa-duotone fa-solid fa-spinner fa-spin-pulse"></i> Enviando...</div>
+                        <div class="message" id="message"></div>
                     </form>
                 </div>
+                    
+            </div>
+
+                
             </div>
         </section>
     </main>
@@ -248,7 +255,9 @@
     <footer>
         <p>Copyright © 2025 Andrei Vinicius</p>
     </footer>
-    
-    <script src="assets/js/main.js"></script>
+
+
+    <script type="text/javascript" src="assets/js/email.js"></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
