@@ -8,8 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <title>Portifolio | Andrei Vinicius - Programador</title>
     <link rel="shortcut icon" type="image/png" href="assets/img/favicon-32x32.png">
 </head>
@@ -27,6 +29,9 @@
     </header>
 
     <main>
+
+        <!-- inicio -->
+         
         <section class="bloco__inicio" id="inicio">
             <h2 class="titulo_inicio"><strong>Um desenvolvedor <span>full stack</span> sonhador</strong></h2>
             <p class="texto_inicio">Na busca de mais conhecimentos e aprendizados na carreira, abaixo, está o meu curriculo e minha página para saber mais sobre mim e meus projetos, fique a vontade para ver mais sobre minha pessoa😊</p>
@@ -35,6 +40,8 @@
                 Curriculo
             </a>
         </section>
+
+        <!-- sessão sobre mim -->
 
         <section id="sobre" class="bloco__sobre">
         <div class="sobre">
@@ -45,21 +52,19 @@
             <div class="titulo-texto">
                 <h2 class="titulo_sobre"><strong>Sobre <span>Mim</span></strong>
                 </h2>
-                <p class="texto_sobre">
-                    <strong>Olá! Me chamo Andrei Vinicius da Silveira</strong>, nascido em 2005 na cidade de Jaraguá do Sul, Santa Catarina.
-                    Cresci no bairro Tifa Martins, onde desenvolvi minha curiosidade e paixão por tecnologia.
-                </p>
-                <p class="texto_sobre">
-                    Atualmente atuo na área de TI, mas minha trajetória é marcada por diversas experiências — inclusive como garçom, o que me ensinou muito sobre empatia e trabalho em equipe.
-                </p>
-                <p class="texto_sobre">
-                    Hoje, meu foco está na carreira de <strong>desenvolvedor full stack</strong>. Já domino tecnologias como <strong>HTML, CSS, JavaScript, Git e GitHub, figma, python, banco de dados relacionais e não relacionais (NoSQL, MySQL, MongoDB)</strong>, e sigo me aprimorando constantemente.
-                    Sei que ainda tenho muito a evoluir, mas toda grande árvore começa com uma pequena semente — e a minha está germinando com força e propósito.
-                </p>
-                <p class="texto_sobre">
-                    Se em algum momento da sua jornada eu puder contribuir de alguma forma, será um prazer ajudar.
-                    Meu contato está logo abaixo, ou <a href="#contato">clique aqui</a> 😉
-                </p>
+                <div class="hidden_sobre"><img src="assets/img/andrei-redonda.jpeg" alt="imagem de andrei formato redondo"></div>
+               <p class="texto_sobre">
+                    <strong>Oi! Eu sou o Andrei Vinicius da Silveira</strong>, nascido em 2005 em Jaraguá do Sul – SC.
+                    </p>
+                    <p class="texto_sobre">
+                    Hoje, atuo na área de TI e sigo me aprofundando no mundo do desenvolvimento. Minha caminhada passou por diferentes áreas (inclusive como garçom!), o que me ensinou muito sobre empatia, responsabilidade e trabalho em equipe.
+                    </p>
+                    <p class="texto_sobre">
+                    Meu foco atual é na carreira de <strong>desenvolvedor full stack</strong>. Tenho conhecimento com <strong>HTML, CSS, JavaScript, Git, GitHub, Figma, Python, MySQL e MongoDB</strong>, e estou sempre estudando pra ir mais fundo.
+                    </p>
+                    <p class="texto_sobre">
+                    Gosto de criar soluções que realmente ajudem as pessoas — e se eu puder colaborar de alguma forma na sua jornada, vai ser um prazer! Bora conversar? <a href="#contato">Clique aqui</a> 🚀
+                    </p>
             </div>
 
             <div>
@@ -69,6 +74,8 @@
         </div>
 
         </section>
+
+        <!-- sessão de projetos -->
 
         <section class="bloco__projetos" id="projetos">
             <div class="projetos">
@@ -131,6 +138,50 @@
                 </div>
             </div>
 
+            <!-- Slider mobile -->
+             <div class="container swiper">
+                <div class="card-wrapper">
+                    <ul class="card-list swiper-wrapper">
+                        <li class="card-item swiper-slide">
+                            <a href="#" class="card-link">
+                                <img src="assets/img/slider1.png" alt="card image" class="card-image">
+                                <p class="badge slider1">Portfolio</p>
+                                <h2 class="card-title">Portfolio feito para Micheli Jaqueline Sauner Raasch, futura professora de Educação Física</h2>
+                                <button class="card-button material-symbols-rounded">arrow_forward</button>
+                            </a>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <a href="#" class="card-link">
+                                <img src="assets/img/slider2.png" alt="card image" class="card-image">
+                                <p class="badge slider2">Revendedor Eudora</p>
+                                <h2 class="card-title">Site feiro para revender produtos Eudora, vem ver os preços!</h2>
+                                <button class="card-button material-symbols-rounded">arrow_forward</button>
+                            </a>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <a href="#" class="card-link">
+                                <img src="assets/img/slider3.png" alt="card image" class="card-image">
+                                <p class="badge slider3">Diablo</p>
+                                <h2 class="card-title">Site feito para demonstrar o jogo DIABLO</h2>
+                                <button class="card-button material-symbols-rounded">arrow_forward</button>
+                            </a>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <a href="#" class="card-link">
+                                <img src="assets/img/slider4.png" alt="card image" class="card-image">
+                                <p class="badge slider4">Jogo da Cobrinha</p>
+                                <h2 class="card-title">Jogo feito para referenciar um marco na vida das crianças dos anos 80, SNAKE!</h2>
+                                <button class="card-button material-symbols-rounded">arrow_forward</button>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+             </div>
+
             <div class="projetos-btn">
                 <h2>Link dos projetos</h2>
                 <div class="btn">
@@ -139,7 +190,11 @@
                     <a href="https://github.com/AndreiVDS/Python-serpent" target="_blank">Jogo da Cobra</a>
                 </div>
             </div>
+
+            
         </section>
+
+        <!-- sessão de habilidades -->
 
         <section id="habilidades" class="bloco__habilidades">
             <h2 class="titulo_bloco_habilidades"><strong>Formação <span>Profissional</span></strong></h2>
@@ -192,6 +247,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- furmulario de contato -->
 
         <section id="contato" class="bloco__contato">
             <h2 class="titulo_contato"><strong>Contato</strong></h2>
@@ -256,7 +313,8 @@
         <p>Copyright © 2025 Andrei Vinicius</p>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/swiper.js"></script>
     <script type="text/javascript" src="assets/js/email.js"></script>
     <script src="assets/js/main.js" defer></script>
 </body>

@@ -1,3 +1,5 @@
+// função para mandar email para minha caixa
+
 (function () {
   emailjs.init({ publicKey: "z6aHFQhiYG4DTEig-" });
 
