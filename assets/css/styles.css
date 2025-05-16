@@ -730,6 +730,55 @@ footer {
         font-size: 1.2rem;
     }
 
+    .botao_curriculo {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+    }
+
+    .projetos-btn {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .projetos-btn .btn {
+        flex-direction: column;
+    }
+
+    .projetos-btn .btn a{
+        font-size: 1rem;
+    }
+
+    .titulo_bloco_habilidades {
+        font-size: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .habilidades_formacoes {
+        flex-direction: column;
+    }
+
+    .bloco__habilidades {
+        margin-top: 10rem;
+        padding: 0;
+    }
+
+    .container-habilidades {
+        width: auto;
+        padding: 10px;
+    }
+
+    .flashcard_habilidades h2 {
+        font-size: 1.5rem;
+    }
+
+    .flashcards_inputs {
+        font-size: 1rem;
+        min-width: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
     .slides, .manual-navigation, .projetos__andrei {
         display: none;
     }
@@ -737,9 +786,7 @@ footer {
     .bloco__projetos .container {
         display: block;
     }
-}
 
-@media screen and (max-width: 768px) {
     .card-wrapper {
         margin: 0 10px 25px;
     }
