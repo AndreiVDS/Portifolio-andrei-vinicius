@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
@@ -1010,7 +1013,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 930px) {
 
     .slides, .manual-navigation, .projetos__andrei {
         display: none;
@@ -1157,7 +1160,7 @@ footer {
     }
 
     .formacoes li {
-        padding-bottom: 10px;
+        padding-bottom: 1rem;
     }
 
 
@@ -1195,7 +1198,7 @@ footer {
     }
 
     .text-and-contact {
-        padding: 20px;
+        padding: 8%;
         flex-direction: column;
     }
 
@@ -1203,7 +1206,7 @@ footer {
         max-width: 100%;
         text-align: center;
         margin-bottom: 2rem;
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     .icons-contato a:last-child{
@@ -1217,11 +1220,17 @@ footer {
 
     .flashcard {
         max-width: 100%;
-        padding: 15px;
+        padding: 5%;
     }
 }
 
-@media (max-width: 1024px) {
+@media screen and (min-width: 930px) and (max-width: 1024px) {
+    .projetos-btn h2 {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 1550px) {
     body {
         overflow-x: hidden;
     }
@@ -1247,6 +1256,30 @@ footer {
         object-fit: cover;
     }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1580px) {
+    .bloco__inicio {
+        min-height: 100vh;
+        padding: 0 10%;
+    }
+
+    .projetos-btn .btn{
+        display: inline-flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1581px) and (max-width: 1920px) {
+    
+}
+
+@media screen and (min-width: 1921px) and (max-width: 2350px) {
+
+}
+
+
+
+
 
 
 
