@@ -1010,7 +1010,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
 
     .slides, .manual-navigation, .projetos__andrei {
         display: none;
@@ -1035,8 +1035,190 @@ footer {
 
 }
 
-@media screen and (min-width: 790px) and (max-width: 1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .titulo_nome {
+        font-size: 2.3rem;
+    }
 
+    .bloco__inicio {
+        min-height: 100vh;
+        padding: 0 10%;
+    }
+
+    .titulo_inicio {
+        font-size: clamp(3rem, 5vw, 3rem);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .texto_inicio {
+        font-size: 2rem;
+    }
+
+    .botao_curriculo {
+        font-size: 2.5rem;
+        padding: 1.5rem 2.5rem;
+    }
+
+    .bloco__sobre {
+        min-height: 50vh;
+        font-size: 1rem;
+        padding: 5%;
+    }
+
+    .titulo-texto p {
+        margin: 0px;
+        padding-bottom: 15px;
+        font-size: 1.7rem;
+    }
+
+    .titulo_sobre {
+        font-size: 5rem;
+        margin-bottom: 15px;
+    }
+
+    .bloco__projetos {
+        margin-top: 5rem;
+        min-height: 95vh;
+        padding: 0 7%;
+    }
+
+    .titulo_projetos {
+        font-size: 4.5rem;
+    }
+
+    .texto_projetos {
+        font-size: 1.7rem;
+    }
+
+    .projetos-btn {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .projetos-btn .btn {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .projetos-btn h2 {
+        font-size: 2rem;
+    }
+
+    .projetos-btn .btn a{
+        font-size: 1.8rem;
+    }
+
+    .bloco__habilidades {
+        margin-top: 6rem;
+        padding: 0;
+        min-height: 78vh;
+        margin-bottom: 5rem;
+    }
+
+    .titulo_bloco_habilidades {
+        font-size: 3rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .habilidades_formacoes {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .container-habilidades, .formacoes {
+        width: auto;
+        padding: 10px;
+    }
+
+    .flashcard_habilidades h2 {
+        font-size: 2rem;
+    }
+
+    .flashcards_inputs {
+        font-size: 1.5rem;
+        min-width: 100px;
+    }
+
+    .formacoes {
+        margin: 0;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .formacoes p, .formacoes li {
+        font-size: 1.5rem;
+        text-align: center;
+        list-style: none;
+    }
+
+    .formacoes li {
+        padding-bottom: 10px;
+    }
+
+
+    .titulo_formacoes {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .academico {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .academico h2 {
+        text-align: center;
+        font-size: 2.7rem;
+    }
+
+    .academico a {
+        font-size: 1.7rem;
+    }
+
+
+    .bloco__contato {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    .titulo_contato {
+        font-size: 4rem;
+    }
+
+    .text-and-contact {
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .text-and-contact .text {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1rem;
+    }
+
+    .icons-contato a:last-child{
+        margin-right: 0;
+    }
+
+    .text-and-contact .contact {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .flashcard {
+        max-width: 100%;
+        padding: 15px;
+    }
 }
 
 @media (max-width: 1024px) {
