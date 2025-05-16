@@ -81,7 +81,7 @@ header.ativo {
 }
 
 .bloco__inicio {
-    height: 100vh;
+    min-height: 90vh;
     padding: 20rem 10rem;
     display: flex;
     justify-content: center;
@@ -132,7 +132,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 90vh;
 }
 
 .sobre {
@@ -176,7 +176,7 @@ a {
 .bloco__projetos {
     justify-content: center;
     align-items: center;
-    height: 110vh;
+    min-height: 110vh;
     padding: 0rem 5rem;
 }
 
@@ -448,7 +448,7 @@ a {
 /* Bloco habilidades */
 
 .bloco__habilidades {
-    height: 85vh;
+    min-height: 90vh;
 }
 
 .titulo_bloco_habilidades {
@@ -561,7 +561,6 @@ span {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem;
-    flex-wrap: wrap; 
   }
   
   .text-and-contact .text {
@@ -673,7 +672,7 @@ footer {
 }
 
 .bloco__inicio, .bloco__sobre, .bloco__projetos, .bloco__habilidades, .bloco__contato, .flashcard {
-    visibility: hidden;
+    
 }
 
 @media (max-width: 468px) {
@@ -685,13 +684,10 @@ footer {
         font-size: 1.5rem;
     }
 
-    .navegacao {
-        display: none;
-    }
-
     .bloco__inicio {
         font-size: 1.5rem;
         margin-bottom: 2rem;
+        min-height: 100vh;
     }
 
     .texto_inicio {
@@ -720,6 +716,7 @@ footer {
 
     .bloco__projetos {
         margin-top: 5rem;
+        min-height: 100vh;
     }
 
     .titulo_projetos {
@@ -746,11 +743,13 @@ footer {
 
     .projetos-btn .btn a{
         font-size: 1rem;
+        margin: 1.2rem;
     }
 
     .titulo_bloco_habilidades {
         font-size: 2.5rem;
         margin-bottom: 0;
+        margin-top: 0;
     }
 
     .habilidades_formacoes {
@@ -758,11 +757,13 @@ footer {
     }
 
     .bloco__habilidades {
-        margin-top: 10rem;
+        margin-top: 6rem;
         padding: 0;
+        min-height: 100vh;
+        margin-bottom: 5rem;
     }
 
-    .container-habilidades {
+    .container-habilidades, .formacoes {
         width: auto;
         padding: 10px;
     }
@@ -772,14 +773,77 @@ footer {
     }
 
     .flashcards_inputs {
-        font-size: 1rem;
+        font-size: .8rem;
         min-width: 100px;
+    }
+
+    .formacoes {
+        margin: 0;
+        padding: 20px;
+    }
+
+    .formacoes p, .formacoes li {
+        font-size: 1rem;
+        text-align: center;
+        list-style: none;
+    }
+
+    .formacoes li {
+        padding-bottom: 10px;
+    }
+
+
+    .titulo_formacoes {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .academico {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .academico h2 {
+        text-align: center;
+    }
+
+
+    .bloco__contato {
+        min-height: 100vh;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    .text-and-contact {
+        padding: 15px;
+    }
+
+    .text-and-contact .text {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .text-and-contact .contact {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .flashcard {
+        max-width: 100%;
     }
 }
 
 @media screen and (max-width: 768px) {
 
     .slides, .manual-navigation, .projetos__andrei {
+        display: none;
+    }
+
+    .navegacao {
         display: none;
     }
 
@@ -794,9 +858,14 @@ footer {
     .card-wrapper .swiper-slide-button {
         display: none;
     }
+
 }
 
 @media (max-width: 1020px) {
+    body {
+        overflow-x: hidden;
+    }
+
     .img__sobre, .pato {
         display: none;
     }
