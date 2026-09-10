@@ -1,0 +1,192 @@
+---
+import { Image } from 'astro:assets'
+import Base from '../layouts/Base.astro'
+import Header from '../components/Header.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import andrei from '../assets/andrei.jpg'
+import { site } from '../data/site'
+import { projects } from '../data/projects'
+import { skillGroups } from '../data/skills'
+import { experience, education } from '../data/experience'
+---
+
+<Base>
+  <Header />
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="top" class="mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-5 pb-16 pt-28">
+      <p class="mb-4 text-sm font-medium tracking-widest text-accent uppercase">{site.role}</p>
+      <h1 class="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-6xl">
+        {site.name}
+      </h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+        {site.tagline}
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a
+          href="#projects"
+          class="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
+          >View projects</a
+        >
+        <a
+          href={`mailto:${site.email}`}
+          class="rounded-md border border-border px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent"
+          >Get in touch</a
+        >
+        {
+          site.socials.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener"
+              class="rounded-md border border-border px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent"
+            >
+              {s.label} ↗
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="border-t border-border bg-surface/40">
+      <div class="mx-auto max-w-5xl px-5 py-20">
+        <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">About</h2>
+        <div class="mt-8 grid gap-10 sm:grid-cols-[200px_1fr] sm:items-start">
+          <Image
+            src={andrei}
+            alt="Portrait of Andrei Vinícius"
+            width={200}
+            height={200}
+            class="h-40 w-40 rounded-xl object-cover"
+          />
+          <div class="space-y-4 text-muted leading-relaxed">
+            <p>
+              I'm a full stack developer from {site.location.replace(' — ', ', ')}. I've worked
+              across the whole lifecycle — <strong class="text-text">QA testing</strong> Java web apps,
+              keeping systems and automations running as an <strong class="text-text">IT infrastructure
+              analyst</strong>, and building web platforms end to end with React, Node.js and PostgreSQL.
+            </p>
+            <p>
+              I like software that is fast, accessible and actually gets used, so I sweat the details
+              most people skip: tests, error and empty states, keyboard navigation, reduced-motion.
+              Right now I'm going deeper into software architecture and automated testing, and I'm
+              open to junior / early-career developer roles.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="border-t border-border">
+      <div class="mx-auto max-w-5xl px-5 py-20">
+        <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Selected projects</h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          {projects.map((p) => <ProjectCard project={p} />)}
+        </div>
+        <p class="mt-8 text-sm text-muted">
+          More on <a href="https://github.com/AndreiVDS" class="text-accent hover:underline">GitHub</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="border-t border-border bg-surface/40">
+      <div class="mx-auto max-w-5xl px-5 py-20">
+        <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Skills</h2>
+        <div class="mt-8 grid gap-8 sm:grid-cols-3">
+          {
+            skillGroups.map((g) => (
+              <div>
+                <h3 class="mb-3 text-sm font-semibold text-text">{g.label}</h3>
+                <ul class="flex flex-wrap gap-1.5">
+                  {g.items.map((s) => (
+                    <li class="rounded border border-border px-2 py-1 text-xs text-muted">{s}</li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="border-t border-border">
+      <div class="mx-auto max-w-5xl px-5 py-20">
+        <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Experience</h2>
+        <div class="mt-8 space-y-8">
+          {
+            experience.map((job) => (
+              <div class="grid gap-2 sm:grid-cols-[180px_1fr]">
+                <p class="text-sm text-muted">{job.period}</p>
+                <div>
+                  <h3 class="font-semibold text-text">
+                    {job.role} · <span class="font-normal text-muted">{job.org}</span>
+                  </h3>
+                  <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-muted">
+                    {job.points.map((pt) => (
+                      <li>{pt}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <h3 class="mt-12 mb-4 text-sm font-semibold tracking-widest text-accent uppercase">Education</h3>
+        <ul class="space-y-2 text-sm">
+          {
+            education.map((e) => (
+              <li class="grid gap-1 sm:grid-cols-[180px_1fr]">
+                <span class="text-muted">{e.period}</span>
+                <span class="text-text">
+                  {e.title} · <span class="text-muted">{e.org}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="border-t border-border bg-surface/40">
+      <div class="mx-auto max-w-5xl px-5 py-24 text-center">
+        <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Contact</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg text-text">
+          Open to junior / early-career developer roles. The fastest way to reach me:
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a
+            href={`mailto:${site.email}`}
+            class="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
+            >Email</a
+          >
+          {
+            site.socials.map((s) => (
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener"
+                class="rounded-md border border-border px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent"
+              >
+                {s.label} ↗
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border">
+    <div class="mx-auto max-w-5xl px-5 py-8 text-sm text-muted">
+      © {new Date().getFullYear()} {site.name} · Built with Astro &amp; Tailwind ·{' '}
+      <a href="https://github.com/AndreiVDS/Portifolio-andrei-vinicius" class="hover:text-text">source</a>
+    </div>
+  </footer>
+</Base>

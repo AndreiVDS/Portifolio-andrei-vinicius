@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets'
+import type { Project } from '../data/projects'
+
+interface Props {
+  project: Project
+}
+const { project } = Astro.props
+---
+
+<article
+ 
+  class:list={[
+    'group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-accent/40',
+    project.featured && 'sm:col-span-2 sm:flex-row',
+  ]}
+>
+  {
+    project.image && (
+      <div class:list={['overflow-hidden bg-surface-2', project.featured ? 'sm:w-1/2' : '']}>
+        <Image
+          src={project.image}
+          alt={`Screenshot of ${project.title}`}
+          width={880}
+          height={330}
+          class="h-48 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] sm:h-full"
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+
+  <div class:list={['flex flex-1 flex-col gap-3 p-5', project.featured && 'sm:w-1/2 sm:p-7']}>
+    <div class="flex items-center gap-2">
+      <h3 class="text-lg font-semibold text-text">{project.title}</h3>
+      {project.featured && <span class="rounded bg-accent-soft px-1.5 py-0.5 text-[11px] font-medium text-accent">Featured</span>}
+    </div>
+
+    <p class="text-sm leading-relaxed text-muted">{project.blurb}</p>
+
+    <ul class="mt-1 flex flex-wrap gap-1.5">
+      {
+        project.stack.map((t) => (
+          <li class="rounded border border-border px-2 py-0.5 text-[11px] text-muted">{t}</li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-auto flex gap-4 pt-2 text-sm">
+      {
+        project.live && (
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener"
+            class="font-medium text-accent hover:underline"
+          >
+            Live demo ↗
+          </a>
+        )
+      }
+      {
+        project.repo && (
+          <a
+            href={project.repo}
+            target="_blank"
+            rel="noopener"
+            class="text-muted hover:text-text"
+          >
+            Code ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

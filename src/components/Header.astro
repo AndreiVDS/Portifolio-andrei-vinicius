@@ -1,0 +1,49 @@
+---
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+]
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-40 border-b border-transparent transition-colors duration-300"
+>
+  <nav
+    class="mx-auto flex max-w-5xl items-center justify-between px-5 py-4"
+    aria-label="Primary"
+  >
+    <a href="#top" class="font-semibold tracking-tight text-text">Andrei&nbsp;V.</a>
+    <ul class="hidden gap-7 text-sm text-muted sm:flex">
+      {
+        links.map((l) => (
+          <li>
+            <a class="transition-colors hover:text-text" href={l.href}>
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href="/cv.pdf"
+      class="rounded-md border border-border px-3 py-1.5 text-sm text-text transition-colors hover:border-accent hover:text-accent"
+      >CV</a
+    >
+  </nav>
+</header>
+
+<script>
+  const header = document.getElementById('site-header')
+  const onScroll = () => {
+    if (!header) return
+    header.classList.toggle('bg-bg/80', window.scrollY > 8)
+    header.classList.toggle('backdrop-blur', window.scrollY > 8)
+    header.classList.toggle('border-border', window.scrollY > 8)
+  }
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+</script>

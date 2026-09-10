@@ -1,27 +1,33 @@
 # Personal portfolio — Andrei Vinícius
 
-My personal portfolio site: intro, about me, projects, skills / experience / education, and a
-contact form.
+My portfolio site. Single page: hero, about, selected projects, skills, experience, contact.
 
 **Live:** <https://portifolio-andrei-vinicius.vercel.app>
 
-## Highlights
-
-- Single-page site with scroll navigation and a sticky header that reacts to scroll.
-- **Projects** shown as a slider — a radio-button slideshow on desktop and a
-  [Swiper](https://swiperjs.com/) carousel on mobile, with autoplay.
-- Scroll-in animations via **ScrollReveal**.
-- Contact form wired to **EmailJS** (no back-end).
-- Downloadable CV (`assets/img/curriculo.pdf`).
-
 ## Stack
 
-`HTML` · `CSS` · `Vanilla JavaScript` · Swiper 11 · ScrollReveal · EmailJS · deployed on Vercel
+`Astro` · `Tailwind CSS v4` · deployed on **Vercel** (static output). Zero client JS beyond a
+tiny scroll-reveal enhancement and the sticky-header toggle. Images optimised at build time
+via `astro:assets`.
 
-## Running
-
-It's fully static — open `index.html`, or serve the folder:
+## Develop
 
 ```bash
-npx serve .
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # static output in dist/
+npm run preview
 ```
+
+## Editing content
+
+Everything is plain data:
+
+| File | What |
+|---|---|
+| `src/data/site.ts` | name, role, tagline, links |
+| `src/data/projects.ts` | the project list (add an entry to add a card) |
+| `src/data/skills.ts` | skill groups |
+| `src/data/experience.ts` | jobs + education |
+
+Project screenshots live in `src/assets/`.
