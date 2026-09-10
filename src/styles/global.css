@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 
-/* ---- design tokens ---- */
+/* dark mode is driven by a .dark class on <html> (set by the no-flash script) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- design tokens (dark = default) ---- */
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
@@ -15,12 +18,43 @@
 }
 
 @layer base {
+  /* light palette — applied when .dark is NOT present */
+  html:not(.dark) {
+    --color-bg: #fbfaf9;
+    --color-surface: #ffffff;
+    --color-surface-2: #f2f0ee;
+    --color-border: #e2ded9;
+    --color-text: #1e1c1a;
+    --color-muted: #6b6560;
+    --color-accent: #b57e00;
+    --color-accent-soft: #b57e0018;
+  }
+
   html {
     scroll-behavior: smooth;
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  html.dark ::selection {
+    color: #000;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -34,19 +68,39 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
 
-  ::selection {
-    background: var(--color-accent);
-    color: #000;
+/* one-time entrance for the hero — pure CSS, never hides content if it fails */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
   }
-
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-    border-radius: 4px;
+  [data-rise] {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
+  [data-rise-2] {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  }
+  [data-rise-3] {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+  }
+}
 
+/* print — used by the /cv page */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  html,
   body {
-    margin: 0;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
   }
 }

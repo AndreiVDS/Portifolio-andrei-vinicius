@@ -46,7 +46,14 @@ const { project } = Astro.props
       }
     </ul>
 
-    <div class="mt-auto flex gap-4 pt-2 text-sm">
+    <div class="mt-auto flex flex-wrap gap-4 pt-2 text-sm">
+      {
+        project.caseStudy && (
+          <a href={project.caseStudy} class="font-medium text-accent hover:underline">
+            Read case study →
+          </a>
+        )
+      }
       {
         project.live && (
           <a

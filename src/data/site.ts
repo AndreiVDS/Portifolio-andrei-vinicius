@@ -6,7 +6,7 @@ export const site = {
   location: 'Jaraguá do Sul, SC — Brazil',
   url: 'https://portifolio-andrei-vinicius.vercel.app',
   email: 'andreivini31@gmail.com',
-  cv: '/cv.pdf',
+  cv: '/cv',
   socials: [
     { label: 'GitHub', href: 'https://github.com/AndreiVDS' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/andrei-vds-dev' },

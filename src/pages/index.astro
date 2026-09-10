@@ -7,7 +7,7 @@ import andrei from '../assets/andrei.jpg'
 import { site } from '../data/site'
 import { projects } from '../data/projects'
 import { skillGroups } from '../data/skills'
-import { experience, education } from '../data/experience'
+import { experience, education, awards, languages } from '../data/experience'
 ---
 
 <Base>
@@ -15,15 +15,21 @@ import { experience, education } from '../data/experience'
 
   <main id="main">
     <!-- Hero -->
-    <section id="top" class="mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-5 pb-16 pt-28">
-      <p class="mb-4 text-sm font-medium tracking-widest text-accent uppercase">{site.role}</p>
-      <h1 class="max-w-3xl text-4xl font-bold leading-tight text-text sm:text-6xl">
+    <section
+      id="top"
+      class="mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-5 pb-16 pt-28"
+    >
+      <p data-rise class="mb-5 flex items-center gap-2 text-sm font-medium tracking-widest text-accent uppercase">
+        <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+        {site.role}
+      </p>
+      <h1 data-rise class="max-w-3xl text-4xl font-bold leading-[1.1] text-text sm:text-6xl">
         {site.name}
       </h1>
-      <p class="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+      <p data-rise-2 class="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
         {site.tagline}
       </p>
-      <div class="mt-9 flex flex-wrap gap-3">
+      <div data-rise-3 class="mt-9 flex flex-wrap gap-3">
         <a
           href="#projects"
           class="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
@@ -51,28 +57,29 @@ import { experience, education } from '../data/experience'
 
     <!-- About -->
     <section id="about" class="border-t border-border bg-surface/40">
-      <div class="mx-auto max-w-5xl px-5 py-20">
+      <div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
         <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">About</h2>
-        <div class="mt-8 grid gap-10 sm:grid-cols-[200px_1fr] sm:items-start">
+        <div class="mt-8 grid gap-8 sm:grid-cols-[180px_1fr] sm:items-start sm:gap-10">
           <Image
             src={andrei}
-            alt="Portrait of Andrei Vinícius"
-            width={200}
-            height={200}
-            class="h-40 w-40 rounded-xl object-cover"
+            alt={`Portrait of ${site.name}`}
+            width={360}
+            height={360}
+            class="h-36 w-36 rounded-2xl border border-border object-cover sm:h-44 sm:w-44"
           />
-          <div class="space-y-4 text-muted leading-relaxed">
+          <div class="space-y-4 leading-relaxed text-muted">
             <p>
               I'm a full stack developer from {site.location.replace(' — ', ', ')}. I've worked
-              across the whole lifecycle — <strong class="text-text">QA testing</strong> Java web apps,
-              keeping systems and automations running as an <strong class="text-text">IT infrastructure
-              analyst</strong>, and building web platforms end to end with React, Node.js and PostgreSQL.
+              across the whole lifecycle — <strong class="text-text">QA testing</strong> Java web
+              apps, keeping systems and automations running as an
+              <strong class="text-text">IT infrastructure analyst</strong>, and building web platforms
+              end to end with React, Node.js and PostgreSQL.
             </p>
             <p>
-              I like software that is fast, accessible and actually gets used, so I sweat the details
-              most people skip: tests, error and empty states, keyboard navigation, reduced-motion.
-              Right now I'm going deeper into software architecture and automated testing, and I'm
-              open to junior / early-career developer roles.
+              I care about software that is fast, accessible and actually gets used, so I sweat the
+              details most people skip: tests, error and empty states, keyboard navigation,
+              reduced-motion. Right now I'm going deeper into software architecture and automated
+              testing, and I'm open to junior / early-career developer roles.
             </p>
           </div>
         </div>
@@ -81,7 +88,7 @@ import { experience, education } from '../data/experience'
 
     <!-- Projects -->
     <section id="projects" class="border-t border-border">
-      <div class="mx-auto max-w-5xl px-5 py-20">
+      <div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
         <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Selected projects</h2>
         <div class="mt-8 grid gap-5 sm:grid-cols-2">
           {projects.map((p) => <ProjectCard project={p} />)}
@@ -94,7 +101,7 @@ import { experience, education } from '../data/experience'
 
     <!-- Skills -->
     <section id="skills" class="border-t border-border bg-surface/40">
-      <div class="mx-auto max-w-5xl px-5 py-20">
+      <div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
         <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Skills</h2>
         <div class="mt-8 grid gap-8 sm:grid-cols-3">
           {
@@ -115,16 +122,16 @@ import { experience, education } from '../data/experience'
 
     <!-- Experience -->
     <section id="experience" class="border-t border-border">
-      <div class="mx-auto max-w-5xl px-5 py-20">
+      <div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
         <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Experience</h2>
         <div class="mt-8 space-y-8">
           {
             experience.map((job) => (
-              <div class="grid gap-2 sm:grid-cols-[180px_1fr]">
+              <div class="grid gap-1 sm:grid-cols-[160px_1fr] sm:gap-4">
                 <p class="text-sm text-muted">{job.period}</p>
                 <div>
                   <h3 class="font-semibold text-text">
-                    {job.role} · <span class="font-normal text-muted">{job.org}</span>
+                    {job.role} <span class="font-normal text-muted">· {job.org}</span>
                   </h3>
                   <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-muted">
                     {job.points.map((pt) => (
@@ -137,25 +144,53 @@ import { experience, education } from '../data/experience'
           }
         </div>
 
-        <h3 class="mt-12 mb-4 text-sm font-semibold tracking-widest text-accent uppercase">Education</h3>
-        <ul class="space-y-2 text-sm">
-          {
-            education.map((e) => (
-              <li class="grid gap-1 sm:grid-cols-[180px_1fr]">
-                <span class="text-muted">{e.period}</span>
-                <span class="text-text">
-                  {e.title} · <span class="text-muted">{e.org}</span>
-                </span>
-              </li>
-            ))
-          }
-        </ul>
+        <div class="mt-14 grid gap-12 sm:grid-cols-2">
+          <div>
+            <h3 class="mb-4 text-sm font-semibold tracking-widest text-accent uppercase">Education</h3>
+            <ul class="space-y-3 text-sm">
+              {
+                education.map((e) => (
+                  <li>
+                    <span class="text-text">{e.title}</span>
+                    <br />
+                    <span class="text-muted">
+                      {e.org} · {e.period}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-4 text-sm font-semibold tracking-widest text-accent uppercase">
+              Awards &amp; languages
+            </h3>
+            <ul class="space-y-3 text-sm">
+              {
+                awards.map((a) => (
+                  <li>
+                    <span class="text-text">{a.title}</span>
+                    <span class="text-muted"> · {a.period}</span>
+                  </li>
+                ))
+              }
+              {
+                languages.map((l) => (
+                  <li>
+                    <span class="text-text">{l.name}</span>
+                    <span class="text-muted"> — {l.level}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="border-t border-border bg-surface/40">
-      <div class="mx-auto max-w-5xl px-5 py-24 text-center">
+      <div class="mx-auto max-w-5xl px-5 py-20 text-center sm:py-24">
         <h2 class="text-sm font-semibold tracking-widest text-accent uppercase">Contact</h2>
         <p class="mx-auto mt-6 max-w-xl text-lg text-text">
           Open to junior / early-career developer roles. The fastest way to reach me:
@@ -186,7 +221,10 @@ import { experience, education } from '../data/experience'
   <footer class="border-t border-border">
     <div class="mx-auto max-w-5xl px-5 py-8 text-sm text-muted">
       © {new Date().getFullYear()} {site.name} · Built with Astro &amp; Tailwind ·{' '}
-      <a href="https://github.com/AndreiVDS/Portifolio-andrei-vinicius" class="hover:text-text">source</a>
+      <a
+        href="https://github.com/AndreiVDS/Portifolio-andrei-vinicius"
+        class="hover:text-text">source</a
+      >
     </div>
   </footer>
 </Base>

@@ -9,6 +9,7 @@ export type Project = {
   repo?: string
   image?: ImageMetadata
   featured?: boolean
+  caseStudy?: string
 }
 
 export const projects: Project[] = [
@@ -21,6 +22,7 @@ export const projects: Project[] = [
     repo: 'https://github.com/AndreiVDS/eventos-regiao',
     image: eventosRegiao,
     featured: true,
+    caseStudy: '/projects/eventos-regiao',
   },
   {
     title: 'Tarefas API',
