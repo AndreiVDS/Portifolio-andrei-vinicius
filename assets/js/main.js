@@ -1,7 +1,11 @@
 const menu = document.querySelector('header')
 
-window.sr = ScrollReveal({ reset: true });
+// reset:false -> a seção NÃO some ao rolar de volta.
+// Respeita "reduzir movimento": nesse caso nem inicializa (conteúdo fica visível).
+const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+if (!semMovimento && typeof ScrollReveal === 'function') {
+window.sr = ScrollReveal({ reset: false })
 sr.reveal('.bloco__inicio', { duration: 1500 });
 
 sr.reveal('.bloco__sobre', { 
@@ -19,10 +23,11 @@ sr.reveal('.bloco__habilidades', { duration: 1500 });
 
 sr.reveal('.bloco__contato', { duration: 1000 });
 
-sr.reveal('.flashcard', { 
+sr.reveal('.flashcard', {
     delay: 500,
     duration: 1500
 });
+}
 
 function activeScroll() {
     menu.classList.toggle('ativo', scrollY > 10);
