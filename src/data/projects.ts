@@ -54,11 +54,11 @@ export const projects: Project[] = [
     repo: 'https://github.com/AndreiVDS/portfolio_micheli',
   },
   {
-    title: 'Snake',
+    title: 'Diablo IV — Landing page',
     blurb:
-      'The classic Snake game on an HTML canvas — grid movement, growth, self- and wall-collision, score and a replay screen. A fundamentals exercise, no libraries.',
-    stack: ['JavaScript', 'Canvas API'],
-    live: 'https://python-serpent.vercel.app',
-    repo: 'https://github.com/AndreiVDS/Python-serpent',
+      'A responsive fan landing page for the game: hero, a "buy now" block with a platform-picker dropdown, and contact. A focused study in layout, typography and breakpoints with no framework.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
+    live: 'https://projeto-diablo-iv.vercel.app',
+    repo: 'https://github.com/AndreiVDS/Projeto-Diablo-IV',
   },
 ]
