@@ -32,6 +32,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* so anchors clear the fixed header */
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
@@ -41,6 +42,7 @@
 
   body {
     margin: 0;
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -70,7 +72,41 @@
   }
 }
 
-/* one-time entrance for the hero — pure CSS, never hides content if it fails */
+@layer components {
+  /* section eyebrow: small caps label + a short accent rule */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .eyebrow::before {
+    content: '';
+    width: 1.75rem;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  /* faint glow behind the hero — depth on wide screens, invisible on small ones */
+  .hero-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60rem 30rem at 15% 10%, var(--color-accent-soft), transparent 60%),
+      radial-gradient(50rem 30rem at 100% 30%, color-mix(in oklab, var(--color-accent) 8%, transparent), transparent 55%);
+  }
+}
+
+/* ------- motion -------
+   Reveal is only armed when JS confirms it's running (html.js) AND motion is
+   allowed. Without JS, or on failure, everything stays visible. A timeout in
+   Base.astro is the final safety net. */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes rise {
     from {
@@ -82,10 +118,23 @@
     animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   [data-rise-2] {
-    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.09s both;
   }
   [data-rise-3] {
-    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+  }
+  [data-rise-4] {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.27s both;
+  }
+
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  html.js [data-reveal].revealed {
+    opacity: 1;
+    transform: none;
   }
 }
 

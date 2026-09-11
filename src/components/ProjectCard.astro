@@ -9,31 +9,37 @@ const { project } = Astro.props
 ---
 
 <article
- 
+  data-reveal
   class:list={[
-    'group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-accent/40',
-    project.featured && 'sm:col-span-2 sm:flex-row',
+    'group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.5)]',
+    project.featured && 'md:col-span-2 md:flex-row',
   ]}
 >
   {
     project.image && (
-      <div class:list={['overflow-hidden bg-surface-2', project.featured ? 'sm:w-1/2' : '']}>
+      <div class:list={['overflow-hidden bg-surface-2', project.featured ? 'md:w-1/2' : '']}>
         <Image
           src={project.image}
           alt={`Screenshot of ${project.title}`}
-          width={880}
-          height={330}
-          class="h-48 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] sm:h-full"
+          width={900}
+          height={340}
+          class="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04] md:h-full"
           loading="lazy"
         />
       </div>
     )
   }
 
-  <div class:list={['flex flex-1 flex-col gap-3 p-5', project.featured && 'sm:w-1/2 sm:p-7']}>
-    <div class="flex items-center gap-2">
+  <div class:list={['flex flex-1 flex-col gap-3 p-6', project.featured && 'md:w-1/2 md:p-8']}>
+    <div class="flex flex-wrap items-center gap-2">
       <h3 class="text-lg font-semibold text-text">{project.title}</h3>
-      {project.featured && <span class="rounded bg-accent-soft px-1.5 py-0.5 text-[11px] font-medium text-accent">Featured</span>}
+      {
+        project.featured && (
+          <span class="rounded bg-accent-soft px-1.5 py-0.5 text-[11px] font-medium text-accent">
+            Featured
+          </span>
+        )
+      }
     </div>
 
     <p class="text-sm leading-relaxed text-muted">{project.blurb}</p>
@@ -46,7 +52,7 @@ const { project } = Astro.props
       }
     </ul>
 
-    <div class="mt-auto flex flex-wrap gap-4 pt-2 text-sm">
+    <div class="mt-auto flex flex-wrap gap-4 pt-3 text-sm">
       {
         project.caseStudy && (
           <a href={project.caseStudy} class="font-medium text-accent hover:underline">
@@ -56,24 +62,14 @@ const { project } = Astro.props
       }
       {
         project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener"
-            class="font-medium text-accent hover:underline"
-          >
+          <a href={project.live} target="_blank" rel="noopener" class="font-medium text-accent hover:underline">
             Live demo ↗
           </a>
         )
       }
       {
         project.repo && (
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noopener"
-            class="text-muted hover:text-text"
-          >
+          <a href={project.repo} target="_blank" rel="noopener" class="text-muted hover:text-text">
             Code ↗
           </a>
         )

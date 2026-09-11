@@ -7,6 +7,8 @@ export const site = {
   url: 'https://portifolio-andrei-vinicius.vercel.app',
   email: 'andreivini31@gmail.com',
   cv: '/cv',
+  openTo: 'junior / early-career developer roles',
+  focus: 'Software architecture, automated testing and accessibility',
   socials: [
     { label: 'GitHub', href: 'https://github.com/AndreiVDS' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/andrei-vds-dev' },
