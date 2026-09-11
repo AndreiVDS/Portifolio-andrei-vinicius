@@ -29,22 +29,22 @@ export const projects: Project[] = [
   {
     title: 'Tarefas API',
     blurb:
-      'A REST API for task management, with relational data modelling, a full CRUD surface and automated tests.',
-    stack: ['Java 17', 'Spring Boot 3', 'Spring Data JPA', 'MySQL', 'JUnit 5'],
+      'A REST API for task management, structured the way a real service is: request/response DTOs, bean validation, a service layer, RFC 7807 error responses, OpenAPI docs, layered tests and a one-command Docker setup (app + MySQL).',
+    stack: ['Java 17', 'Spring Boot 3', 'Spring Data JPA', 'Bean Validation', 'OpenAPI', 'Docker', 'JUnit 5'],
     repo: 'https://github.com/AndreiVDS/Desenvolvimento-API',
   },
   {
     title: 'Movidesk → Notion sync',
     blurb:
-      'An automation that keeps a Notion database in sync with the Movidesk help-desk and raises Telegram alerts for tickets falling through the cracks. Built for my own team’s workflow.',
-    stack: ['Python', 'requests', 'Movidesk API', 'Notion API', 'Telegram Bot API'],
+      'An automation that keeps a Notion database in sync with the Movidesk help-desk and raises Telegram alerts for tickets falling through the cracks. Built for my own team’s workflow; the orchestration takes its I/O as dependencies, so it is covered by 16 tests with no network.',
+    stack: ['Python', 'requests', 'Movidesk API', 'Notion API', 'Telegram Bot API', 'pytest', 'CI'],
     repo: 'https://github.com/AndreiVDS/API-chamados-Notion',
   },
   {
     title: 'File Organizer',
     blurb:
-      'A desktop tool that sorts a folder’s files into category subfolders — run once over a mess, or leave it running to tidy new files as they land.',
-    stack: ['Python', 'watchdog', 'Tkinter', 'PyInstaller'],
+      'A CLI that sorts a folder’s files into category subfolders — run once over a mess, or leave it watching for new files. Plan / apply are split (so --dry-run is free), categories are overridable, and name clashes are never overwritten.',
+    stack: ['Python', 'argparse', 'watchdog', 'pytest', 'PyInstaller'],
     repo: 'https://github.com/AndreiVDS/Organizador_de_arquivos',
   },
   {
