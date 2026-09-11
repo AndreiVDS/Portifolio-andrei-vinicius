@@ -1,5 +1,7 @@
 import type { ImageMetadata } from 'astro'
 import eventosRegiao from '../assets/eventos-regiao.jpg'
+import micheli from '../assets/micheli.jpg'
+import diablo from '../assets/diablo.jpg'
 
 export type Project = {
   title: string
@@ -52,6 +54,7 @@ export const projects: Project[] = [
     stack: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
     live: 'https://portfolio-micheli-jy3m.vercel.app',
     repo: 'https://github.com/AndreiVDS/portfolio_micheli',
+    image: micheli,
   },
   {
     title: 'Diablo IV — Landing page',
@@ -60,5 +63,6 @@ export const projects: Project[] = [
     stack: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
     live: 'https://projeto-diablo-iv.vercel.app',
     repo: 'https://github.com/AndreiVDS/Projeto-Diablo-IV',
+    image: diablo,
   },
 ]
