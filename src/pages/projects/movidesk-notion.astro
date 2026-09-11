@@ -1,0 +1,182 @@
+---
+import Base from '../../layouts/Base.astro'
+
+const stack = [
+  'Python 3.12',
+  'requests (Session + urllib3 Retry)',
+  'python-dotenv',
+  'Movidesk REST API',
+  'Notion API',
+  'Telegram Bot API',
+  'pytest',
+  'GitHub Actions',
+]
+---
+
+<Base
+  title="Case study — Movidesk → Notion sync"
+  description="How I turned a manual ticket-copying chore into a tested, idempotent sync between the Movidesk help-desk, Notion and Telegram."
+>
+  <main id="main" class="mx-auto max-w-3xl px-6 py-16">
+    <a href="/#projects" class="text-sm text-muted hover:text-text">← Back to projects</a>
+
+    <header class="mt-6 border-b border-border pb-8">
+      <p class="eyebrow">Case study</p>
+      <h1 class="mt-3 text-3xl font-bold text-text sm:text-4xl">Movidesk → Notion sync</h1>
+      <p class="mt-4 leading-relaxed text-muted">
+        A Python job that keeps a Notion board in step with the Movidesk help-desk and raises
+        Telegram alerts for tickets falling through the cracks. Built for my own team's workflow as
+        an IT infrastructure analyst.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4 text-sm">
+        <a
+          href="https://github.com/AndreiVDS/API-chamados-Notion"
+          class="font-medium text-accent hover:underline">Source ↗</a
+        >
+      </div>
+    </header>
+
+    <!-- pipeline -->
+    <div class="mt-10 grid gap-3 rounded-xl border border-border bg-surface/50 p-5 text-center text-sm sm:grid-cols-[1fr_auto_1fr_auto_1fr]">
+      <div class="rounded-lg border border-border p-3">
+        <div class="font-semibold text-text">Movidesk</div>
+        <div class="text-muted">open tickets</div>
+      </div>
+      <div class="self-center text-accent">→</div>
+      <div class="rounded-lg border border-border p-3">
+        <div class="font-semibold text-text">sync.run()</div>
+        <div class="text-muted">create · update · archive</div>
+      </div>
+      <div class="self-center text-accent">→</div>
+      <div class="grid gap-2">
+        <div class="rounded-lg border border-border p-3">
+          <div class="font-semibold text-text">Notion</div>
+          <div class="text-muted">the team board</div>
+        </div>
+        <div class="rounded-lg border border-border p-3">
+          <div class="font-semibold text-text">Telegram</div>
+          <div class="text-muted">alerts, once</div>
+        </div>
+      </div>
+    </div>
+
+    <article class="mt-10 space-y-10">
+      <section>
+        <h2 class="text-lg font-semibold text-text">The problem</h2>
+        <p class="mt-3 leading-relaxed text-muted">
+          Support tickets live in Movidesk, but the team tracked equipment and "who has what" on a
+          Notion board that was updated <em>by hand</em>. Every ticket that touched a piece of
+          equipment had to be copied across; tickets that came in with no assignee were easy to
+          miss; and the equipment status (busy / free) drifted out of date within a day.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">What it does, each run</h2>
+        <ol class="mt-3 list-decimal space-y-1.5 pl-5 leading-relaxed text-muted">
+          <li>Pull every open ticket from Movidesk, paging through all results.</li>
+          <li>
+            For a ticket with an assignee <strong class="text-text">and</strong> a linked asset,
+            create or update its Notion page.
+          </li>
+          <li>
+            For a ticket that is unassigned, has no asset and matches a keyword (notebook, meeting
+            room, microphone, …) → send one Telegram message.
+          </li>
+          <li>Archive Notion pages whose ticket has been closed or has left Movidesk.</li>
+        </ol>
+        <p class="mt-3 leading-relaxed text-muted">
+          A second mode (<code>--mode equipamentos</code>) reuses the same ticket data to mark each
+          asset <em>Ocupado</em> / <em>Disponível</em>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">Decisions &amp; trade-offs</h2>
+        <dl class="mt-4 space-y-5">
+          <div>
+            <dt class="font-medium text-text">Idempotent sync, not a one-way push</dt>
+            <dd class="mt-1 leading-relaxed text-muted">
+              Each run first indexes the Notion side by ticket number, then decides create vs update
+              vs archive. Running it twice changes nothing the second time; a closed ticket's card is
+              archived, not left behind.
+            </dd>
+          </div>
+          <div>
+            <dt class="font-medium text-text">Alert once, with a tiny state file</dt>
+            <dd class="mt-1 leading-relaxed text-muted">
+              A <code>NotifiedStore</code> keeps a set of tags in a JSON file. Without it, every run
+              would re-ping Telegram about the same ticket. A corrupt file just starts fresh.
+            </dd>
+          </div>
+          <div>
+            <dt class="font-medium text-text">I/O passed in as dependencies</dt>
+            <dd class="mt-1 leading-relaxed text-muted">
+              <code>sync.run()</code> takes the Notion client, the Telegram sender and the state
+              store as <em>arguments</em>. That is the whole reason it has 16 tests that drive it
+              with fakes and assert the create / update / archive / alert behaviour — no network, no
+              mocking of <code>requests</code>.
+            </dd>
+          </div>
+          <div>
+            <dt class="font-medium text-text">Retry + backoff at the session level</dt>
+            <dd class="mt-1 leading-relaxed text-muted">
+              Movidesk and Notion both return <code>429</code> under load. One
+              <code>requests.Session</code> with a <code>urllib3</code> retry policy handles that for
+              every call, instead of a try/except around each request.
+            </dd>
+          </div>
+          <div>
+            <dt class="font-medium text-text">Config — including the keyword list — from the environment</dt>
+            <dd class="mt-1 leading-relaxed text-muted">
+              Which tickets "matter" is a moving target. <code>KEYWORDS</code> is an env var, so
+              tuning it never needs a code change or a redeploy.
+            </dd>
+          </div>
+          <div>
+            <dt class="font-medium text-text">A <code>--dry-run</code> flag</dt>
+            <dd class="mt-1 leading-relaxed text-muted">
+              A job that writes to a shared team board should let you see the plan first. Dry-run
+              logs every create / update / archive it <em>would</em> do and touches nothing.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">Where it landed</h2>
+        <ul class="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-muted">
+          <li>The manual copy step is gone; the board reflects Movidesk on every run.</li>
+          <li>Unassigned tickets that match a keyword surface in Telegram within one run.</li>
+          <li>16 pytest tests over the pure helpers, the state store and the orchestration; CI on every push.</li>
+          <li>
+            Refactored from one 250-line dated script into a small package
+            (<code>config</code>, <code>http_client</code>, <code>movidesk</code>,
+            <code>notion</code>, <code>telegram</code>, <code>state</code>, <code>tickets</code>,
+            <code>sync</code>).
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">Stack</h2>
+        <ul class="mt-3 flex flex-wrap gap-1.5">
+          {stack.map((t) => <li class="rounded border border-border px-2 py-1 text-xs text-muted">{t}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">What I'd do next</h2>
+        <p class="mt-3 leading-relaxed text-muted">
+          Validate the Notion database's property schema on startup (fail fast with a clear message
+          instead of a 400 mid-run); structured logging to a file for the scheduled runs; and
+          package it so it installs with <code>pip</code> and runs as a console command.
+        </p>
+      </section>
+    </article>
+
+    <footer class="mt-12 border-t border-border pt-6 text-sm">
+      <a href="/#projects" class="text-accent hover:underline">← Back to all projects</a>
+    </footer>
+  </main>
+</Base>

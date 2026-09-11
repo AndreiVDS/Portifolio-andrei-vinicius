@@ -39,6 +39,7 @@ export const projects: Project[] = [
       'An automation that keeps a Notion database in sync with the Movidesk help-desk and raises Telegram alerts for tickets falling through the cracks. Built for my own team’s workflow; the orchestration takes its I/O as dependencies, so it is covered by 16 tests with no network.',
     stack: ['Python', 'requests', 'Movidesk API', 'Notion API', 'Telegram Bot API', 'pytest', 'CI'],
     repo: 'https://github.com/AndreiVDS/API-chamados-Notion',
+    caseStudy: '/projects/movidesk-notion',
   },
   {
     title: 'File Organizer',
